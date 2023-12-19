@@ -1,6 +1,7 @@
 import "./PostFooter.scss";
+import PropTypes from "prop-types";
 
-function PostFooter() {
+function PostFooter({ no_of_likes }) {
   return (
     <div className="c-post-footer">
       <div className="c-post-footer__icon">
@@ -31,9 +32,17 @@ function PostFooter() {
           </g>
         </svg>
       </div>
-      <span className="c-post-footer__counter">12k</span>
+      <span className="c-post-footer__counter">{no_of_likes}</span>
     </div>
   );
 }
+
+PostFooter.propTypes = {
+  no_of_likes: PropTypes.number,
+};
+
+PostFooter.defaultProps = {
+  no_of_likes: 0,
+};
 
 export default PostFooter;
