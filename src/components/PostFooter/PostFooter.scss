@@ -11,5 +11,10 @@
     font-weight: 700;
     color: rgb(156, 6, 6);
     font-size: 18px;
+    user-select: none;
   }
+}
+
+svg:hover {
+  cursor: pointer;
 }

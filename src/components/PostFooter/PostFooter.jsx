@@ -1,11 +1,19 @@
 import "./PostFooter.scss";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function PostFooter({ no_of_likes }) {
+  const [likes, setLikes] = useState(no_of_likes);
+
+  function addLike() {
+    setLikes(likes + 1);
+  }
+
   return (
     <div className="c-post-footer">
       <div className="c-post-footer__icon">
         <svg
+          onClick={addLike}
           width="32px"
           height="32px"
           viewBox="0 0 24 24"
@@ -32,7 +40,7 @@ function PostFooter({ no_of_likes }) {
           </g>
         </svg>
       </div>
-      <span className="c-post-footer__counter">{no_of_likes}</span>
+      <span className="c-post-footer__counter">{likes}</span>
     </div>
   );
 }
