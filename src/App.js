@@ -1,8 +1,24 @@
+import { useEffect, useState } from "react";
 import "./App.scss";
 import Post from "./components/Post/Post";
 
 function App() {
-  const posts = [
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=4`)
+      .then((res) => res.json())
+      .then((posts) => {
+        let mergedPosts = [];
+        for (let i = 0; i < posts.length; i++) {
+          mergedPosts.push({ ...posts[i], ...localPosts[i] });
+        }
+        console.log(mergedPosts);
+        setPosts(mergedPosts);
+      });
+  }, []);
+
+  const localPosts = [
     {
       id: 1,
       user_nickname: "bloger12",
